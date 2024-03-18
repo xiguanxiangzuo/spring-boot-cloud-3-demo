@@ -1,0 +1,58 @@
+spring:
+  cloud:
+    nacos:
+      server-addr: 192.168.56.10:8848
+    openfeign:
+      # Apache HttpClient5 配置开启
+      httpclient:
+        hc5:
+          enabled: true
+      # 开启压缩
+      compression:
+        # 请求压缩
+        request:
+          enabled: true
+          # 最小触发压缩的大小
+          min-request-size: 2048
+          # 触发压缩数据类型
+          mime-types: text/xml,application/xml,application/json
+        # 响应压缩
+        response:
+          enabled: true
+      client:
+        config:
+          default:
+            # 连接超时时间
+            connect-timeout: 3000
+            # 读取超时时间
+            read-timeout: 3000
+
+# feign 日志以什么级别监控哪个接口
+logging:
+  level:
+    web: debug
+    #root: debug
+
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+    enabled: true
+  api-docs:
+    path: /v3/api-docs
+    enabled: true
+  group-configs:
+    - group: 'admin'
+      paths-to-match: '/admin/**'
+      packages-to-scan: com.xgxz.cloud
+    - group: 'api'
+      paths-to-match: '/api/**'
+      packages-to-scan: com.xgxz.cloud
+
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+
