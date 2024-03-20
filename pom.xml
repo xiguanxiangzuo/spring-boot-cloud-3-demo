@@ -20,8 +20,9 @@
 
     <modules>
         <module>service-provider-8081</module>
-        <module>service-consumer-order-80</module>
+        <module>service-consumer-order-8080</module>
         <module>service-api-commons</module>
+        <module>service-gateway-80</module>
     </modules>
 
     <properties>

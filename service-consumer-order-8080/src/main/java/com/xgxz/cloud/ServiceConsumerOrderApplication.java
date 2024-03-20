@@ -9,10 +9,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
-public class ServiceConsumerOrder80Application {
+public class ServiceConsumerOrderApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ServiceConsumerOrder80Application.class, args);
+        SpringApplication.run(ServiceConsumerOrderApplication.class, args);
     }
 
 }

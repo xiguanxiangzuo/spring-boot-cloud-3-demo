@@ -7,9 +7,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="service-provider-8081" />
-        <module name="service-consumer-order-80" />
+        <module name="service-gateway-80" />
+        <module name="service-consumer-order-8080" />
         <module name="service-api-commons" />
+        <module name="service-provider-8081" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -23,8 +24,9 @@
       <module name="mybatis-generator2024" options="-parameters" />
       <module name="renren-generator" options="" />
       <module name="service-api-commons" options="-parameters" />
-      <module name="service-consumer-order-80" options="-parameters" />
+      <module name="service-consumer-order-8080" options="-parameters" />
       <module name="service-gateway" options="-parameters" />
+      <module name="service-gateway-80" options="-parameters" />
       <module name="service-provider-8081" options="-parameters" />
       <module name="spring-boot-cloud-3-demo" options="" />
     </option>

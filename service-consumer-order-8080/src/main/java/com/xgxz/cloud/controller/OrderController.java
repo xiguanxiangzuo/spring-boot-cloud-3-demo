@@ -6,8 +6,13 @@ import com.xgxz.cloud.feign.PayFeign;
 import com.xgxz.cloud.response.ResultData;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.util.Enumeration;
 
 /**
  * ClassName: OrderConsumer
@@ -18,9 +23,10 @@ import org.springframework.web.bind.annotation.*;
  * @Create 2024/3/18 22:05
  * @Version 1.0
  */
+@Slf4j
 @Tag(name = "测试OpenFeign调用")
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/admin/order")
 public class OrderController {
 
     @Autowired
@@ -38,5 +44,19 @@ public class OrderController {
     public ResultData<Pay> getById(@PathVariable("id") Long id) {
 
         return payFeign.getById(id);
+    }
+
+    @GetMapping("/gateway/filter")
+    public ResultData<String> getGatewayFilter(HttpServletRequest request) {
+
+        Enumeration<String> headers = request.getHeaderNames();
+
+        while (headers.hasMoreElements()) {
+            String headName = headers.nextElement();
+            String headValue = request.getHeader(headName);
+            log.info("请求头名: {}, 请求头值: {}", headName, headValue);
+        }
+
+        return ResultData.success("gateway 过滤器: " + LocalDateTime.now());
     }
 }
