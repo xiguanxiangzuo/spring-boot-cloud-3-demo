@@ -4,19 +4,21 @@ server:
 spring:
   application:
     name: service-gateway
-#  profiles:
-#    active: commons
-
   cloud:
+    nacos:
+      server-addr: 192.168.56.10:8848
     gateway:
+      discovery:
+        locator:
+          enabled: true # gateway 可以发现 nacos 中的微服务，并自动生成转发路由
       routes:
-        - id: service-cloud-provider
-          uri: lb://service-cloud-provider
-          predicates:
-            - Path=/*/pay/**
-            - My=diamond
-
         - id: service-cloud-consumer
           uri: lb://service-cloud-consumer
           predicates:
-            - Path=/*/order/**
+            - Path=/admin/order/**
+        - id: service-cloud-provider
+          uri: lb://service-cloud-provider
+          predicates:
+            - Path=/admin/pay/**
+
+

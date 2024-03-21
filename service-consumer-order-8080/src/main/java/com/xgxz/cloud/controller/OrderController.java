@@ -43,7 +43,13 @@ public class OrderController {
     @GetMapping("/getById/{id}")
     public ResultData<Pay> getById(@PathVariable("id") Long id) {
 
-        return payFeign.getById(id);
+        log.info("consumer调用开始: {}", LocalDateTime.now());
+
+        ResultData<Pay> result = payFeign.getById(id);
+
+        log.info("consumer调用结束: {}", LocalDateTime.now());
+
+        return result;
     }
 
     @GetMapping("/gateway/filter")

@@ -30,8 +30,11 @@ spring:
 # feign 日志以什么级别监控哪个接口
 logging:
   level:
-    web: debug
-    #root: debug
+    com:
+      xgxz:
+        cloud:
+          feign:
+            PayFeign: debug
 
 
 springdoc:

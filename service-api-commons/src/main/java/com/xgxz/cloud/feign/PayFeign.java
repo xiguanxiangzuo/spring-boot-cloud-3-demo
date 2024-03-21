@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @Create 2024/3/18 21:49
  * @Version 1.0
  */
-@FeignClient(value = "service-cloud-provider")
+@FeignClient(value = "service-gateway")
 public interface PayFeign {
 
     @Operation(summary = "新增", description = "新增支付流水方法")

@@ -6,8 +6,11 @@ import com.xgxz.cloud.response.ResultData;
 import com.xgxz.cloud.service.PayService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
  * @since 2024-03-17
  */
 @Tag(name = "支付")
+@Slf4j
 @RestController
 @RequestMapping("/admin/pay")
 public class PayController {
@@ -37,7 +41,17 @@ public class PayController {
     @GetMapping("/getById/{id}")
     public ResultData<Pay> getById(@PathVariable("id") Long id) {
 
+        log.info("调用开始: {}", LocalDateTime.now());
+
+        /*try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }*/
+
         Pay pay = payService.getById(id);
+
+        log.info("调用结束: {}", LocalDateTime.now());
 
         return ResultData.success(pay);
     }
