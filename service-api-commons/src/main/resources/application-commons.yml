@@ -1,7 +1,5 @@
 spring:
   cloud:
-    nacos:
-      server-addr: 192.168.56.10:8848
     openfeign:
       # Apache HttpClient5 配置开启
       httpclient:

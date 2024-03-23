@@ -13,5 +13,3 @@ spring:
           uri: lb://service-cloud-provider
           predicates:
             - Path=/admin/pay/**
-
-
