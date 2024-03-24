@@ -1,6 +1,7 @@
 spring:
   profiles:
-    active: dev,commons
+#    active: dev,commons
+    active: prod,commons
 #  datasource:
 #    type: com.zaxxer.hikari.HikariDataSource
 #    driver-class-name: com.mysql.cj.jdbc.Driver

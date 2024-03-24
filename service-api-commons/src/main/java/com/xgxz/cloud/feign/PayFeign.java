@@ -2,6 +2,7 @@ package com.xgxz.cloud.feign;
 
 import com.xgxz.cloud.dto.PayDTO;
 import com.xgxz.cloud.entity.Pay;
+import com.xgxz.cloud.feign.fallback.FeignSentinelFallBack;
 import com.xgxz.cloud.response.ResultData;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @Create 2024/3/18 21:49
  * @Version 1.0
  */
-@FeignClient(value = "service-gateway")
+@FeignClient(value = "service-gateway", fallback = FeignSentinelFallBack.class)
 public interface PayFeign {
 
     @Operation(summary = "新增", description = "新增支付流水方法")

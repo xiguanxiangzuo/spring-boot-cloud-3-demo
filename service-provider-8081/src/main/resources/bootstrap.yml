@@ -11,4 +11,21 @@ spring:
       config:
         server-addr: 192.168.56.10:8848
         file-extension: yml
+        group: PROD_GROUP
+        namespace: prod
 
+    sentinel:
+      transport:
+        # 配置 sentinel dashboard 控制台服务地址
+        dashboard: 192.168.56.10:8080
+        port: 8719
+      # controller 层的方法对service层调用不认为是同一根链路
+      web-context-unify: false
+      datasource:
+        ds1:
+          nacos:
+            server-addr: 192.168.56.10:8848
+            data-id: : ${spring.application.name}
+            group-id: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
